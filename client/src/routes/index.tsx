@@ -2,7 +2,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { PageTransition } from "@/components/motion/PageTransition";
-import { ScrollDownIndicator } from "@/components/motion/ScrollDownIndicator";
 import { LinkButton } from "@/components/layout/LinkButton";
 import { buildHead } from "@/lib/meta";
 
@@ -17,7 +16,6 @@ function LandingPage() {
 						Get Started!
 					</LinkButton>
 				}
-				indicator={<ScrollDownIndicator />}
 			/>
 		</PageTransition>
 	);

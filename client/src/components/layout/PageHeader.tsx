@@ -19,7 +19,7 @@ export function PageHeader({
 }: Props) {
 	return (
 		<section
-			className={`relative min-h-[95vh] mx-auto px-8 py-32 bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center gap-y-8 ${className}`}
+			className={`relative min-h-[80vh] mx-auto px-8 py-32 bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center gap-y-8 ${className}`}
 		>
 			<SlideUp
 				delay={0}

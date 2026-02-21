@@ -16,7 +16,7 @@ function RootLayout() {
 		<>
 			<HeadContent />
 			<Header />
-			<main className="flex flex-col flex-1">
+			<main className="min-h-[calc(100vh-8rem)] flex flex-col flex-1">
 				<Outlet />
 			</main>
 			<Footer />

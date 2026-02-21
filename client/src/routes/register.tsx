@@ -50,8 +50,8 @@ function RegisterPage() {
 				centered
 				className="min-h-[80vh] flex flex-col items-center justify-center"
 			>
-				<Container className="bg-gray-200 dark:bg-slate-800 rounded max-w-3xl px-6 py-8">
-					<div>
+				<Container className="max-w-3xl p-6">
+					<div className="py-12">
 						<h1 className="text-4xl mb-4">Sign up</h1>
 						<p className="max-w-[40ch] mx-auto">
 							An account allows you to use the services. Creating an account is
@@ -70,7 +70,11 @@ function RegisterPage() {
 									onChange={(e) =>
 										setForm((f) => ({ ...f, name: e.target.value }))
 									}
-									className={errors.name ? "border-destructive" : ""}
+									className={
+										errors.name
+											? "border-destructive"
+											: "bg-gray-50 dark:bg-gray-600 dark:border dark:border-gray-600"
+									}
 								/>
 								<FieldError>{errors.name}</FieldError>
 							</Field>
@@ -84,7 +88,11 @@ function RegisterPage() {
 									onChange={(e) =>
 										setForm((f) => ({ ...f, email: e.target.value }))
 									}
-									className={errors.email ? "border-destructive" : ""}
+									className={
+										errors.email
+											? "border-destructive"
+											: "bg-gray-50 dark:bg-gray-600 dark:border dark:border-gray-600"
+									}
 								/>
 								<FieldError>{errors.email}</FieldError>
 							</Field>
@@ -98,13 +106,17 @@ function RegisterPage() {
 									onChange={(e) =>
 										setForm((f) => ({ ...f, password: e.target.value }))
 									}
-									className={errors.password ? "border-destructive" : ""}
+									className={
+										errors.password
+											? "border-destructive"
+											: "bg-gray-50 dark:bg-gray-600 dark:border dark:border-gray-600"
+									}
 								/>
 								<FieldError>{errors.password}</FieldError>
 							</Field>
 
-							<Field className="mt-4">
-								<Button type="submit" size="lg">
+							<Field className="mt-6">
+								<Button type="submit" variant="default" size="lg">
 									Sign up
 								</Button>
 							</Field>

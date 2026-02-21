@@ -32,7 +32,7 @@ export function UserMenu() {
 				<Button
 					variant="link"
 					size="sm"
-					className="text-foreground hover:no-underline"
+					className="text-background hover:no-underline"
 				>
 					{label}
 				</Button>

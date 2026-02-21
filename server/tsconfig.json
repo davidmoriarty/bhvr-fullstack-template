@@ -1,0 +1,17 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"declaration": true,
+		"outDir": "dist",
+		"rootDir": "src",
+		"allowJs": false,
+		"types": ["bun-types"],
+		"noEmit": false,
+		"emitDecoratorMetadata": true,
+		"skipLibCheck": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist"],
+	"references": [{ "path": "../shared" }]
+}

@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run lint
+      - run: bun run type-check
+      - run: bun run test
+
+      - name: Set APP_VERSION
+        run: echo "APP_VERSION=${GITHUB_SHA}" >> $GITHUB_ENV
+        # or: echo "APP_VERSION=${{ github.sha }}" | cut -c1-12 >> $GITHUB_ENV  (if you want short)
+
+      - run: bun run build

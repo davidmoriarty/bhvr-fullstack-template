@@ -1,0 +1,15 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"],
+			"@shared": ["../shared/src/index.ts"],
+			"@shared/*": ["../shared/src/*"]
+		},
+		"allowJs": false,
+		"noEmit": true
+	},
+	"include": ["src/**/*"],
+	"references": [{ "path": "../shared" }]
+}

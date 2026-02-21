@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# TypeScript
+.turbo/
+*.tsbuildinfo
+
+# Build output
+dist/
+build/
+
+# OS
+.DS_Store

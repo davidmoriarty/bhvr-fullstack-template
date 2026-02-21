@@ -1,12 +1,20 @@
 # Full-Stack TypeScript Template
 
-A minimal full-stack template built with:
+Built with Bun • Hono • Drizzle ORM • PostgreSQL • React • Turborepo
+
+A production-ready full-stack TypeScript template featuring a Bun-powered API (Hono), Drizzle ORM with PostgreSQL, a React + Vite frontend, JWT authentication, and a scalable Turborepo monorepo structure.
+
+---
+
+## Stack
 
 - Bun
 - Hono
 - Drizzle ORM
 - PostgreSQL
 - React + Vite
+- Tailwind CSS
+- TypeScript
 - Turborepo
 - shadcn/ui
 - JWT authentication (access + refresh tokens)

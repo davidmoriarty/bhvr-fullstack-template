@@ -1,5 +1,5 @@
 {
-	"name": "bhvr-fullstack-template",
+	"name": "fullstack-template",
 	"version": "0.0.1",
 	"description": "A fullstack template built built on BHVR foundation that adds db, authentication, and custom components and configs",
 	"author": "David Moriarty",

@@ -15,7 +15,15 @@ const envSchema = z.object({
 		.enum(["development", "production", "test"])
 		.default("development"),
 
-	DATABASE_URL: z.string().min(1),
+	DATABASE_URL: z
+		.string()
+		.min(1)
+		.refine(
+			(v) => v.startsWith("postgres://") || v.startsWith("postgresql://"),
+			{
+				message: "DATABASE_URL must be a Postgres connection string",
+			},
+		),
 	JWT_SECRET: z.string().min(32),
 
 	CLIENT_ORIGIN: z

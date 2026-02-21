@@ -1,7 +1,8 @@
-import "dotenv/config";
 import type { Config } from "drizzle-kit";
 
-if (!process.env.DATABASE_URL) {
+const DATABASE_URL = process.env.DATABASE_URL;
+
+if (!DATABASE_URL) {
 	throw new Error("DATABASE_URL is missing");
 }
 
@@ -10,6 +11,6 @@ export default {
 	out: "./src/lib/db/migrations",
 	dialect: "postgresql",
 	dbCredentials: {
-		url: process.env.DATABASE_URL,
+		url: DATABASE_URL,
 	},
 } satisfies Config;

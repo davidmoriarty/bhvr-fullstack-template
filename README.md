@@ -1,93 +1,119 @@
-# App Name
+# Full-Stack TypeScript Template
 
-App description
+A minimal full-stack template built with:
 
-
----
-
-# Build & Deployment Versioning
-
-This template supports automatic version injection via `APP_VERSION`.
-
-## How It Works
-
-`meta.ts` returns:
-
-{
-  "name": "...",
-  "version": "APP_VERSION",
-  "status": "ok"
-}
-
-If `APP_VERSION` is not set, it defaults to `"dev"`.
+- Bun
+- Hono
+- Drizzle ORM
+- PostgreSQL
+- React + Vite
+- Turborepo
+- shadcn/ui
+- JWT authentication (access + refresh tokens)
 
 ---
 
-# Local Development
+## Project Structure
 
-No setup required.
+client/     → React frontend (Vite)  
+server/     → Hono API  
+shared/     → Shared types  
 
-`.env` does NOT need `APP_VERSION`.
+---
 
-Version will default to:
+## Getting Started
+
+### 1. Install dependencies
+
+```zsh
+bun install
+```
+
+### 2. Configure environment variables
+
+Create:
+
+```zsh
+server/.env
+```
+
+Using:
+
+```zsh
+server/.env.example
+```
+
+Minimum required:
+
+```zsh
+DATABASE_URL=postgres://user:password@localhost:5432/dbname  
+JWT_SECRET=generate-a-strong-random-string  
+CLIENT_ORIGIN=http://localhost:5173
+```
+
+### 3. Run development servers
+
+```zsh
+bun run dev
+```
+
+---
+
+## Database
+
+Generate migrations:
+```zsh
+bunx drizzle-kit generate
+```
+
+Run migrations:
+```zsh
+bunx drizzle-kit migrate
+```
+
+---
+
+## Available Scripts
+
+From project root:
+```zsh
+bun run dev  
+bun run build  
+bun run lint  
+bun run type-check  
+```
+---
+
+## Version Injection (Optional)
+
+This template supports build-time version injection via `APP_VERSION`.
+
+If `APP_VERSION` is not set, it defaults to:
 
 dev
 
----
+### Inject commit SHA during CI
 
-# CI (GitHub Actions)
+echo "APP_VERSION=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
-CI injects the commit SHA:
+### Inject during Fly build
 
-- name: Set APP_VERSION
-  run: echo "APP_VERSION=${{ github.sha }}" >> $GITHUB_ENV
-
-This makes `APP_VERSION` available during `bun run build`.
-
----
-
-# Fly Deployment
-
-To bake the version into the Docker image:
-
+```zsh
 fly deploy \
   --build-arg APP_VERSION=$(git rev-parse --short HEAD)
-
-Your `server/Dockerfile` must include in the runner stage:
-
-ARG APP_VERSION
-ENV APP_VERSION=$APP_VERSION
+```
 
 ---
 
-# Optional: Runtime Version via Fly Secrets
+## Production Notes
 
-If you prefer runtime injection instead of build-time:
-
-fly secrets set APP_VERSION=$(git rev-parse --short HEAD) -a <app-name>
-
-This does not require `--build-arg`.
-
----
-
-# Recommended Strategy
-
-• CI builds the image  
-• CI injects commit SHA  
-• Fly deploy passes `--build-arg`  
-• `/` and `/__info` return the exact deployed version  
-
----
-
-This provides:
-
-• Traceable deployments  
-• Debuggable production  
-• Zero manual version bumps  
-• SaaS-grade observability  
+- Do not commit `.env`
+- Set secrets via your hosting provider
+- Use a strong `JWT_SECRET` (≥ 32 bytes)
+- Use a secure PostgreSQL connection string
 
 ---
 
 ## License
 
-MIT License
+MIT
